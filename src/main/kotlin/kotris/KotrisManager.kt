@@ -444,9 +444,11 @@ class KotrisManager {
 
     fun halfClockWise(p : Int, q : Int, mino : Mino) {
         if (mino == Mino.O) return
-        if (rotation == 180) rotation = 0
-        else if (rotation == 270) rotation = 90
-        else rotation += 180
+        when (rotation) {
+            180 -> rotation = 0
+            270 -> rotation = 90
+            else -> rotation += 180
+        }
         if (canMove(p, q, mino)) return
         when (rotation) {
             90 -> {
@@ -607,30 +609,30 @@ enum class Mino {
 
     fun getRealShape() : Array<Array<Int>> {
         return when (this) {
-            Mino.I -> arrayOf(
+            I -> arrayOf(
                 arrayOf(1, 1, 1, 1)
             )
-            Mino.O -> arrayOf(
+            O -> arrayOf(
                 arrayOf(1, 1),
                 arrayOf(1, 1)
             )
-            Mino.T -> arrayOf(
+            T -> arrayOf(
                 arrayOf(0, 1, 0),
                 arrayOf(1, 1, 1)
             )
-            Mino.S -> arrayOf(
+            S -> arrayOf(
                 arrayOf(0, 1, 1),
                 arrayOf(1, 1, 0)
             )
-            Mino.Z -> arrayOf(
+            Z -> arrayOf(
                 arrayOf(1, 1, 0),
                 arrayOf(0, 1, 1)
             )
-            Mino.J -> arrayOf(
+            J -> arrayOf(
                 arrayOf(1, 0, 0),
                 arrayOf(1, 1, 1)
             )
-            Mino.L -> arrayOf(
+            L -> arrayOf(
                 arrayOf(0, 0, 1),
                 arrayOf(1, 1, 1)
             )
@@ -641,31 +643,31 @@ enum class Mino {
         if (rotation == 0) return getRealShape()
         if (this == O) return getRealShape()
         if (rotation == 180) return when (this) {
-            Mino.I -> arrayOf(
+            I -> arrayOf(
                 arrayOf(0, 0, 0, 0),
                 arrayOf(1, 1, 1, 1)
             )
-            Mino.T -> arrayOf(
+            T -> arrayOf(
                 arrayOf(0, 0, 0),
                 arrayOf(1, 1, 1),
                 arrayOf(0, 1, 0)
             )
-            Mino.S -> arrayOf(
+            S -> arrayOf(
                 arrayOf(0, 0, 0),
                 arrayOf(0, 1, 1),
                 arrayOf(1, 1, 0)
             )
-            Mino.Z -> arrayOf(
+            Z -> arrayOf(
                 arrayOf(0, 0, 0),
                 arrayOf(1, 1, 0),
                 arrayOf(0, 1, 1)
             )
-            Mino.J -> arrayOf(
+            J -> arrayOf(
                 arrayOf(0, 0, 0),
                 arrayOf(1, 1, 1),
                 arrayOf(0, 0, 1)
             )
-            Mino.L -> arrayOf(
+            L -> arrayOf(
                 arrayOf(0, 0, 0),
                 arrayOf(1, 1, 1),
                 arrayOf(1, 0, 0)
@@ -674,33 +676,33 @@ enum class Mino {
             else -> {throw Error()}
         }
         if (rotation == 90) return when (this) {
-            Mino.I -> arrayOf(
+            I -> arrayOf(
                 arrayOf(0, 0, 1, 0),
                 arrayOf(0, 0, 1, 0),
                 arrayOf(0, 0, 1, 0),
                 arrayOf(0, 0, 1, 0)
             )
-            Mino.T -> arrayOf(
+            T -> arrayOf(
                 arrayOf(0, 1, 0),
                 arrayOf(0, 1, 1),
                 arrayOf(0, 1, 0)
             )
-            Mino.S -> arrayOf(
+            S -> arrayOf(
                 arrayOf(0, 1, 0),
                 arrayOf(0, 1, 1),
                 arrayOf(0, 0, 1)
             )
-            Mino.Z -> arrayOf(
+            Z -> arrayOf(
                 arrayOf(0, 0, 1),
                 arrayOf(0, 1, 1),
                 arrayOf(0, 1, 0)
             )
-            Mino.J -> arrayOf(
+            J -> arrayOf(
                 arrayOf(0, 1, 1),
                 arrayOf(0, 1, 0),
                 arrayOf(0, 1, 0)
             )
-            Mino.L -> arrayOf(
+            L -> arrayOf(
                 arrayOf(0, 1, 0),
                 arrayOf(0, 1, 0),
                 arrayOf(0, 1, 1)
@@ -709,33 +711,33 @@ enum class Mino {
             else -> {throw Error()}
         }
         if (rotation == 270) return when (this) {
-            Mino.I -> arrayOf(
+            I -> arrayOf(
                 arrayOf(0, 1, 0, 0),
                 arrayOf(0, 1, 0, 0),
                 arrayOf(0, 1, 0, 0),
                 arrayOf(0, 1, 0, 0)
             )
-            Mino.T -> arrayOf(
+            T -> arrayOf(
                 arrayOf(0, 1, 0),
                 arrayOf(1, 1, 0),
                 arrayOf(0, 1, 0)
             )
-            Mino.S -> arrayOf(
+            S -> arrayOf(
                 arrayOf(1, 0, 0),
                 arrayOf(1, 1, 0),
                 arrayOf(0, 1, 0)
             )
-            Mino.Z -> arrayOf(
+            Z -> arrayOf(
                 arrayOf(0, 1, 0),
                 arrayOf(1, 1, 0),
                 arrayOf(1, 0, 0)
             )
-            Mino.J -> arrayOf(
+            J -> arrayOf(
                 arrayOf(0, 1, 0),
                 arrayOf(0, 1, 0),
                 arrayOf(1, 1, 0)
             )
-            Mino.L -> arrayOf(
+            L -> arrayOf(
                 arrayOf(1, 1, 0),
                 arrayOf(0, 1, 0),
                 arrayOf(0, 1, 0)
